@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Sky Raider — Endless Sky Shooter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="game-container">
+  <canvas id="game" width="960" height="540" aria-label="Area permainan Sky Raider"></canvas>
+
+    <!-- ===== HUD (in-game) ===== -->
+    <div id="hud" class="hidden">
+      <div id="score-badge">
+        <span class="score-label">SKOR</span>
+        <span id="score-value">0</span>
+      </div>
+      <div id="lives-badge">
+        <img class="life-icon" id="life-0" src="assets/Fly_1.png" alt="nyawa">
+        <img class="life-icon" id="life-1" src="assets/Fly_1.png" alt="nyawa">
+        <img class="life-icon" id="life-2" src="assets/Fly_1.png" alt="nyawa">
+      </div>
+    </div>
+
+    <!-- ===== START SCREEN ===== -->
+    <div id="start-screen" class="overlay-screen">
+      <div class="cloud-deco cloud-a"></div>
+      <div class="cloud-deco cloud-b"></div>
+      <div class="panel start-panel">
+        <p class="eyebrow">MISI LANGIT TANPA AKHIR</p>
+        <h1 class="game-title">SKY <span>RAIDER</span></h1>
+        <div id="start-plane-preview">
+          <img id="preview-plane-img" src="assets/Fly_1.png" alt="Pesawat pemain">
+        </div>
+        <p class="tagline">Kendalikan pesawat, hindari musuh, dan tembak jatuh sebanyak mungkin sebelum pesawatmu hancur!</p>
+
+        <div class="howto">
+          <div class="howto-item">
+            <span class="howto-icon">🖱️ / 👆</span>
+            <span>Gerakkan mouse atau sentuh layar untuk terbang</span>
+          </div>
+          <div class="howto-item">
+            <span class="howto-icon">⌨️</span>
+            <span>Atau gunakan panah / WASD di keyboard</span>
+          </div>
+          <div class="howto-item">
+            <span class="howto-icon">💥</span>
+            <span>Tembakan otomatis — posisikan pesawatmu untuk mengenai musuh</span>
+          </div>
+          <div class="howto-item">
+            <span class="howto-icon">❤️</span>
+            <span>3 kali tertabrak / tertembak = pesawatmu hancur</span>
+          </div>
+        </div>
+
+        <button id="start-btn" class="btn-primary">MULAI TERBANG</button>
+        <p class="best-score-line">Skor terbaik: <span id="best-score-start">0</span></p>
+      </div>
+    </div>
+
+    <!-- ===== GAME OVER SCREEN ===== -->
+    <div id="gameover-screen" class="overlay-screen hidden">
+      <div class="panel gameover-panel">
+        <p class="eyebrow eyebrow-danger">PESAWAT HANCUR</p>
+        <h1 class="game-title small">GAME <span>OVER</span></h1>
+        <img id="dead-plane-img" src="assets/Dead_1.png" alt="Pesawat hancur">
+        <div class="score-summary">
+          <div class="score-row">
+            <span>Skor Kamu</span>
+            <strong id="final-score">0</strong>
+          </div>
+          <div class="score-row">
+            <span>Skor Terbaik</span>
+            <strong id="best-score-final">0</strong>
+          </div>
+          <p id="new-record" class="new-record hidden">🏆 Rekor baru!</p>
+        </div>
+        <button id="restart-btn" class="btn-primary">TERBANG LAGI</button>
+      </div>
+    </div>
+
+  <!-- ===== LOADING ===== -->
+  <div id="loading-screen" class="overlay-screen">
+    <div class="loader"></div>
+    <p>Menyiapkan langit...</p>
+  </div>
+
+  <!-- ===== Developer credit ===== -->
+  <a id="dev-credit" href="https://github.com/lockey-irawan/" target="_blank" rel="noopener noreferrer" aria-label="GitHub Lockey Irawan">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+    </svg>
+    <span>Dev by <strong>Lockey Irawan</strong></span>
+  </a>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
